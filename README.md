@@ -16,8 +16,8 @@ API REST para una tienda en línea. Gestiona autenticación de usuarios, catálo
 ## Levantar con Docker
 
 El primer paso para levantar los contenedores docker que servirán toda la aplicación (backend, frontend y base de datos) es organizar el sistema de carpetas 
-de todo el proyecto: Este repositorio debe ubicarse en la misma carpeta en la cual se aloja la aplicación frontend para luego mover el archivo `docker-compose.
-yml` a la carpeta donde están los dos proyectos:
+de todo el proyecto: Este repositorio debe ubicarse en la misma carpeta en la cual se aloja la aplicación frontend (que puedes clonar desde el repositorio 
+https://github.com/fahico98/linktic-store-client) para luego mover el archivo `docker-compose.yml` a la carpeta donde están los dos proyectos:
 
 ```bash
 directorio-del-proyecto/
@@ -42,16 +42,6 @@ docker compose up --build
 | PostgreSQL| localhost:**5433**         |
 
 Al iniciar en perfil `dev`, la app puebla automáticamente la base de datos con usuarios, productos y compras de prueba.
-
----
-
-## Levantar sin Docker
-
-```bash
-# 1. Asegúrate de tener PostgreSQL corriendo y ajusta application.yaml si es necesario
-# 2. Desde la carpeta backend/
-./mvnw spring-boot:run
-```
 
 ---
 
