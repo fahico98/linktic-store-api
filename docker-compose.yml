@@ -1,0 +1,46 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - '8080:8080'
+    depends_on:
+      - database
+    volumes:
+      - ./backend/src:/app/src
+      - maven_repo:/root/.m2
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DEVTOOLS_RESTART_ENABLED=true
+      - SPRING_DOCKER_COMPOSE_ENABLED=false
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+  database:
+    image: postgres
+    container_name: database
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  maven_repo:
+  postgres_data:
+
