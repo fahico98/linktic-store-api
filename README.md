@@ -117,3 +117,5 @@ Tablas: `users`, `products`, `purchases`, `purchase_products`.
 | Miguel Castillo | miguel.castillo@email.com | 12345678 |
 
 Los 50 productos se importan desde [dummyjson.com](https://dummyjson.com) con precios y stock aleatorios.
+
+Autor: **Fahibram Cárcamo C.**
